@@ -1,3 +1,7 @@
 <resources>
+    <dimen name="widget_radius">4dp</dimen>
+    <dimen name="widget_list_height">128dp</dimen>
     <dimen name="activity_horizontal_margin">16dp</dimen>
+    <dimen name="activity_vertical_margin">16dp</dimen>
+    <dimen name="widget_title_text_size">16dp</dimen>
 </resources>

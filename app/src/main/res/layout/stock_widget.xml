@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp">
+    <LinearLayout
+        android:id="@+id/widget_topbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="8dp"
+        android:gravity="center"
+        android:background="@drawable/rounded_indigo"
+        >
+
+        <TextView
+
+            android:id="@+id/widget_symbol"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="start|center_vertical"
+            android:textSize="@dimen/widget_title_text_size"
+            android:layout_weight="10"
+            android:padding="8dp"
+            android:text="@string/app_name"
+            android:contentDescription="@string/app_name"
+           />
+
+        <ImageButton
+            android:id="@+id/widget_add"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="8dp"
+            android:layout_weight="1"
+            android:background="@null"
+            android:src="@drawable/ic_add_white_24dp"
+            android:contentDescription="@string/add_stock"/>
+
+        <ImageButton
+            android:id="@+id/widget_update"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="8dp"
+            android:layout_weight="1"
+            android:background="@null"
+            android:src="@drawable/ic_refresh_white_24dp"
+            android:contentDescription="@string/refresh_stocks"/>
+    </LinearLayout>
+    <ListView
+        android:id="@+id/widget_list"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        ></ListView>
+
+
+</LinearLayout>

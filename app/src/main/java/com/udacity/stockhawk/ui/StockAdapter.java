@@ -2,6 +2,7 @@ package com.udacity.stockhawk.ui;
 
 
 import android.content.Context;
+import android.content.Intent;
 import android.database.Cursor;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -68,8 +69,9 @@ class StockAdapter extends RecyclerView.Adapter<StockAdapter.StockViewHolder> {
 
 
         holder.symbol.setText(cursor.getString(Contract.Quote.POSITION_SYMBOL));
+        holder.symbol.setContentDescription(context.getString(R.string.a11y_stock_symbol,holder.symbol.getText()));
         holder.price.setText(dollarFormat.format(cursor.getFloat(Contract.Quote.POSITION_PRICE)));
-
+        holder.price.setContentDescription(context.getString(R.string.a11y_price,holder.price.getText()) );
 
         float rawAbsoluteChange = cursor.getFloat(Contract.Quote.POSITION_ABSOLUTE_CHANGE);
         float percentageChange = cursor.getFloat(Contract.Quote.POSITION_PERCENTAGE_CHANGE);
@@ -86,11 +88,11 @@ class StockAdapter extends RecyclerView.Adapter<StockAdapter.StockViewHolder> {
         if (PrefUtils.getDisplayMode(context)
                 .equals(context.getString(R.string.pref_display_mode_absolute_key))) {
             holder.change.setText(change);
+            holder.change.setContentDescription(context.getString(R.string.a11y_change,change));
         } else {
             holder.change.setText(percentage);
+            holder.change.setContentDescription(context.getString(R.string.a11y_percent_change,percentage));
         }
-
-
     }
 
     @Override
@@ -131,8 +133,10 @@ class StockAdapter extends RecyclerView.Adapter<StockAdapter.StockViewHolder> {
             int symbolColumn = cursor.getColumnIndex(Contract.Quote.COLUMN_SYMBOL);
             clickHandler.onClick(cursor.getString(symbolColumn));
 
+            Intent intent = new Intent(context,StockDetailActivity.class);
+            intent.putExtra(Contract.Quote.COLUMN_SYMBOL,cursor.getString(Contract.Quote.POSITION_SYMBOL));
+            intent.putExtra(Contract.Quote.COLUMN_HISTORY,cursor.getString(Contract.Quote.POSITION_HISTORY));
+            context.startActivity(intent);
         }
-
-
     }
 }
